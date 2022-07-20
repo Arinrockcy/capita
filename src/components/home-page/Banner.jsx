@@ -5,13 +5,14 @@ export default class Banner extends Component {
         this.state = {
             loading: true,
             loggedIn: false,
-            myRef: null
+            myRef: props.myRef
         };
     }
     executeScroll = () => {
         return this.state.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     componentWillReceiveProps(props) {
+        console.log(props)
         this.setState({
             loading: props.loading,
             loggedIn: props.loggedIn,

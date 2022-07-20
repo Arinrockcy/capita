@@ -11,7 +11,7 @@ export default class Home extends Component {
         this.myRef = createRef();
         this.state = {
             loading: true,
-            data: null,
+            data: null
         };
     }
 
