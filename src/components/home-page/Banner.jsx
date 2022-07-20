@@ -34,7 +34,7 @@ export default class Banner extends Component {
                             </div>
                         </div>
                         {
-                            (!this.state.loggedIn) ?
+                            (this.state.loggedIn) ?
                                 <div className="btn-block" onClick={this.github}>
                                     <div className="btn-text-wrap btn-outline">
                                         <span>Login with your GitHub</span>
