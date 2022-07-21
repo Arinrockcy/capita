@@ -21,6 +21,7 @@ export default class Home extends Component {
             user: props.data
         });
     }
+    
     render() {
         return <>
             <Banner loading={this.state.loading} loggedIn = {!this.state.loading} myRef = {this.myRef}/>

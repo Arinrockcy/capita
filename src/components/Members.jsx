@@ -4,6 +4,7 @@ import Loader from "./Spinner";
 export default class Members extends PureComponent {
     constructor(props) {
         super(props);
+        this.Members = new Set();
         this.state = {
             loading: true,
             data: [],
@@ -18,6 +19,8 @@ export default class Members extends PureComponent {
 
     async fetchRepos(e, user, refName){
         this.refs[refName].setAttribute('checked', true);
+        this.Members.add(this.state.data.find(item => item['login'] === refName));
+        console.log(this.Members);
         const response = await fetch(`http://localhost:5000/auth/github/users/${user}/repos`, {
           method: "GET",
           credentials: "include",
@@ -34,7 +37,7 @@ export default class Members extends PureComponent {
         const data = await response.json();
         this.setState({
             repos: data, repoLoading:false 
-        })
+        });
       }
     render() {
         const {
@@ -67,7 +70,12 @@ export default class Members extends PureComponent {
                     </ul>
                 </div>
             </div>
-            <Repos data = {repos} loading={repoLoading} organizationName = {organizationName} />
+            <Repos 
+            data = {repos} 
+            loading={repoLoading} 
+            organizationName = {organizationName} 
+            Members = {this.Members}
+            />
         </>
     }
 }

@@ -13,7 +13,7 @@ const Navbar = ({ user }) => {
         <div className="nav-container">
           {user ? (
             <><div className="name-holder">
-              <p>Hi {user.user.displayName}</p>
+              <p>Hi {user.displayName}</p>
             </div><div className="button-container">
                 <div className="button-wrap">
                   <Link to='/dashboard' className="button-text">My Account</Link>

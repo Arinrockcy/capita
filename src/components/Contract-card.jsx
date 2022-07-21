@@ -3,8 +3,17 @@ import { Component } from "react";
 export default class ContractCard extends Component {
     constructor() {
         super();
+        this.state = {
+            organizationName:null,
+            members: []
+        }
     }
 
+    componentWillReceiveProps(props) {
+        this.setState({
+            ...props
+        });
+    }
     render() {
         return <div className="contract-card-container">
         <div className="contract-details-wrap">

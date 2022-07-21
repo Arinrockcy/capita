@@ -6,17 +6,7 @@ import Organizations from '../components/Organizations';
 import ContractDetails from "../components/Contract-details";
 import ContractCard from "../components/Contract-card";
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: true,
-      orgs: null,
-      error: null,
-      members: null
-    };
-  }
-  
+   
   render() {   
     return <>
       <aside className="aside sidenav-wrap">
