@@ -1,6 +1,7 @@
 import { PureComponent } from "react";
+import { connect } from "react-redux";
 import Loader from "./Spinner";
-export default class Repos extends PureComponent {
+class Repos extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,15 +16,14 @@ export default class Repos extends PureComponent {
 
     render() {
         const {
-            loading,
-            data
-        } = this.state;
-        if (loading) return <Loader />;
+            repos
+        } = this.props;
+        if (!repos) return <Loader />;
         return <div className="table-column">
             <h3>Repositories</h3>
             <div className="repos-list-holder">
                 <ul className="repos-list-wrap">
-                    {data.map((item, i) => (
+                    {repos.map((item, i) => (
                         <li key={i} >
                             {/* <img src={item.avatar_url} alt="" className="img" /> */}
                             <p >{item['name'].toLocaleUpperCase()}</p>
@@ -38,3 +38,11 @@ export default class Repos extends PureComponent {
         </div>
     }
 }
+
+const mapStateToProps = state => ({
+    ...state
+  });
+  const mapDispatchToProps = dispatch => ({
+  });
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Repos);

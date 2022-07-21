@@ -1,22 +1,26 @@
 import { defaultState } from "../state/default.state.js";
 import actionsConstant from '../constants/actions'
-const {loginActions} = actionsConstant;
-console.log(actionsConstant)
+const { loginActions, dashboard } = actionsConstant;
 const reducer = (state = defaultState, action) => {
-    const newState = {...state};
+    const newState = { ...state };
 
     // eslint-disable-next-line default-case
-    switch(action.type){
-        case 'loggedIn':
+    switch (action.type) {
+        case loginActions.loggedIn:
             newState.user = action.loginPayload;
             break;
+        case dashboard.loadOrgData:
+            newState.organizations = action.orgPayload;
+            break;
+        case dashboard.loadMembersData:
+            newState.members = action.membersPayload;
+            newState.organizationName = action.organizationName;
+            break;
+        case dashboard.loadReposData:
+            newState.repos = action.reposPayload;
+            newState.membersList = action.membersList;
+            break;
     }
-    // if(action.type === 'fetch_org_data') {
-    //     console.log(action)
-    // } else
-    // if(action.type === 'ON_SUCCESS') {
-    //     console.log(action)
-    // }
     return newState;
 }
 

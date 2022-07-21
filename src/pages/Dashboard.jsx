@@ -2,11 +2,15 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import "../css/common.css";
 import "../css/styles.css";
+import { connect } from "react-redux";
 import Organizations from '../components/Organizations';
+import Members from "../components/Members";
+import Repos from '../components/Repos'
 import ContractDetails from "../components/Contract-details";
 import ContractCard from "../components/Contract-card";
+import {} from '../store/action/dashboard';
 class Dashboard extends Component {
-   
+  
   render() {   
     return <>
       <aside className="aside sidenav-wrap">
@@ -22,6 +26,8 @@ class Dashboard extends Component {
             </div>
             <div className="data-table-container">
             <Organizations></Organizations>
+            <Members />
+            <Repos />
             </div>
           <ContractDetails></ContractDetails>
           <ContractCard></ContractCard>
@@ -31,6 +37,10 @@ class Dashboard extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+});
 
-
-export default Dashboard
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

@@ -12,7 +12,6 @@ export default class Banner extends Component {
         return this.state.myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     componentWillReceiveProps(props) {
-        console.log(props)
         this.setState({
             loading: props.loading,
             loggedIn: props.loggedIn,
